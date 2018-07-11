@@ -54,7 +54,23 @@
         <floor :floorData="floor1" :floorTitle="floorName.floor1" />
         <floor :floorData="floor2" :floorTitle="floorName.floor2" />
         <floor :floorData="floor3" :floorTitle="floorName.floor3" />
-        <!-- {{price || moneyFilter }} -->
+        <!-- {{price | moneyFilter }} -->
+
+        <!-- 热卖商品 -->
+        <div class="hot-area">
+            <div class="hot-title">
+                热卖商品
+            </div>
+            <div class="hot-goods">
+                <van-list>
+                    <van-row>
+                        <van-col :span="12" v-for="(item,index) in hotGoods" :key="index">
+                            <goodsInfo :goodsImage="item.image" :goodsName="item.name" :goodsPrice="item.price" />
+                        </van-col>
+                    </van-row>
+                </van-list>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -67,6 +83,7 @@ import swiperDefault from '@/components/swiper/swiperDefault'
 import serverAPI from '@/serverAPI.config'
 import floor from '@/components/component/floor'
 import {toMoney} from '@/filter/moneyFilter'
+import goodsInfo from '@/components/component/goodsInfo'
 
 export default {
     data() {
@@ -86,7 +103,8 @@ export default {
             floor2: [],
             floor3: [],
             floorName: {},
-            price: 3.5565357
+            price: 3.5565357,
+            hotGoods: []
         }
     },
     created(){
@@ -102,6 +120,7 @@ export default {
             this.floor2 = res.data.data.floor2;
             this.floor3 = res.data.data.floor3;
             this.floorName = res.data.data.floorName;
+            this.hotGoods = res.data.data.hotGoods;
         })
         .catch(error => {
 
@@ -111,6 +130,7 @@ export default {
     },
     filters: {
         moneyFilter(money) {
+            console.log(money)
             return toMoney(money);
         }
     },
@@ -118,7 +138,8 @@ export default {
         swiper,
         swiperSlide,
         swiperDefault,
-        floor
+        floor,
+        goodsInfo
     }
 }
 </script>
@@ -172,6 +193,12 @@ export default {
         border-right: 1px solid silver;
         font-size: 12px;
         text-align: center;
+    }
+    .hot-area {
+        text-align:center;
+        font-size:14px;
+        height: 1.8rem;
+        line-height: 1.8rem;
     }
     
 </style>
