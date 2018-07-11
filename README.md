@@ -1,4 +1,4 @@
-# smilevue
+# vue-mall
 
 > A Vue.js project
 
