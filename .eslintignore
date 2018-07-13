@@ -3,3 +3,5 @@
 /dist/
 /*.js
 /src/
+/service/
+/src/components/pages/*.js
