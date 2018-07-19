@@ -3,10 +3,11 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import {Button, Col, Row, Search, Swipe, SwipeItem, Lazyload, List, Field, NavBar} from 'vant'
+import {Button, Col, Row, Search, Swipe, SwipeItem, Lazyload, List, Field, NavBar,Tabs,Tab} from 'vant'
 
 Vue.use(Button).use(Col).use(Row).use(Search).use(Swipe)
-.use(SwipeItem).use(Lazyload).use(List).use(NavBar).use(Field);
+.use(SwipeItem).use(Lazyload).use(List).use(NavBar).use(Field)
+.use(Tabs).use(Tab);
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
